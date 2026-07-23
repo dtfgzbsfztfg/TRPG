@@ -1,0 +1,35 @@
+# 범용 시스템 프로필 예시.
+# 다른 시스템(D&D5e, 크툴루 등)을 쓰고 싶으면 이 파일을 복사해서
+# systems/dnd5e.yaml, systems/coc.yaml 처럼 새로 만들면 됩니다.
+
+name: "범용 (Generic)"
+
+# 판정 방식: "d20_high" (d20 + 수정치, 높을수록 좋음) 또는 "percentile_under" (능력치 이하로 굴리면 성공)
+check_type: "d20_high"
+
+# 캐릭터가 가질 능력치 목록. key는 코드/DB에서 쓰는 식별자, label은 화면 표시용.
+stats:
+  - key: str
+    label: "근력"
+    default: 10
+  - key: dex
+    label: "민첩"
+    default: 10
+  - key: con
+    label: "체력"
+    default: 10
+  - key: int
+    label: "지능"
+    default: 10
+  - key: wis
+    label: "지혜"
+    default: 10
+  - key: cha
+    label: "매력"
+    default: 10
+
+# d20_high 방식일 때, 능력치 값에서 수정치를 구하는 공식 (파이썬 eval 대상, 변수명 value 사용)
+modifier_formula: "(value - 10) // 2"
+
+# 기본 HP
+default_hp: 10
